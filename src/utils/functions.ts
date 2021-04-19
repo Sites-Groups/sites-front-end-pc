@@ -109,11 +109,11 @@ function setTime(str: string) {
 export function formatTime(time: number | Date | string): string {
   const date = new Date(time);
   const year = date.getFullYear();
-  const month = date.getMonth() + '';
+  const month = `${date.getMonth() + 1}`;
   const day = date.getDate() + '';
   const hour = date.getHours() + '';
   const minu = date.getMinutes() + '';
-  return `${year}-${setTime(month + 1)}-${setTime(day)} ${setTime(hour)}:${setTime(minu)}`;
+  return `${year}-${setTime(month)}-${setTime(day)} ${setTime(hour)}:${setTime(minu)}`;
 }
 
 // export function parseHtml(str) {

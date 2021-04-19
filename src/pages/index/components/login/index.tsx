@@ -49,7 +49,7 @@ const Login: React.FC<{ dispatch: Function }> = ({ dispatch }) => {
       if (!password) {
         throw '请输入密码';
       }
-      if (password.length < 6 || name.length > 20) {
+      if (password.length < 6 || password.length > 20) {
         throw '密码长度6-20位';
       }
       if (!isLogin && password !== submitPassword) {
