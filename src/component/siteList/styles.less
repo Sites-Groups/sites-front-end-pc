@@ -101,18 +101,18 @@
 }
 .con {
   display: flex;
-  width: 300px;
+  // width: 300px;
   // background: white;
   padding: 5px 0;
   color: @BORDER;
   .filter::before {
-    content: '';
-    width: 1px;
-    height: 9px;
-    background: #40c2f8;
-    position: absolute;
-    top: 8px;
-    left: 68px;
+    // content: '';
+    // width: 1px;
+    // height: 9px;
+    // background: #40c2f8;
+    // position: absolute;
+    // top: 8px;
+    // left: 68px;
   }
   .filter {
     display: flex;
@@ -127,13 +127,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      margin: 0 10px;
     }
     .filterItem[data-current='true'] {
       opacity: 1;
     }
-    .filterItem:last-of-type {
-      margin-left: 20px;
-    }
+    // .filterItem:last-of-type {
+    //   margin-left: 20px;
+    // }
     .filterItem:last-of-type::before {
       // border: none;
       display: none;
