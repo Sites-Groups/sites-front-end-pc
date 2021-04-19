@@ -1,8 +1,8 @@
-import React, { useCallback, useState, useMemo, useEffect } from 'react';
-import { FILTER_TYPES, SORTER_TYPE } from './constant';
+import React, { useCallback, useMemo } from 'react';
+import { FILTER_TYPES } from './constant';
 import classnames from 'classnames';
 
-const { code } = FILTER_TYPES[0];
+// const { code } = FILTER_TYPES[0];
 
 import styles from './styles.less';
 
