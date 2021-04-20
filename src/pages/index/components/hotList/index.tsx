@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+import { Tooltip } from 'antd';
 import { useDidMount } from '@/utils/hooks';
 import { stringify } from '@/utils/functions';
 import { getHotList } from './service';
@@ -6,15 +7,18 @@ import { getHotList } from './service';
 import styles from './styles.less';
 
 export default () => {
-  const [state, setState] = useState({
+  const [state, setState] = useState<{
+    loading: boolean;
+    list?: Record<string, number>[];
+  }>({
     loading: false,
     list: [],
   });
 
   const query = useCallback(async () => {
     setState({
+      ...state,
       loading: true,
-      list: [],
     });
     let data = [];
     try {
@@ -34,7 +38,7 @@ export default () => {
     query();
   }, []);
 
-  const { loading, list } = state;
+  const { loading, list = [] } = state;
   return (
     <div className={styles.listBox}>
       <div className={styles.aminWrap}>
@@ -58,11 +62,13 @@ export default () => {
               target="_blank"
               rel="noreferrer"
             >
-              <div
-                className={styles.siteIcon}
-                style={{ backgroundImage: `url(${siteIcon})` }}
-              ></div>
-              <div className={styles.siteName}>{siteName}</div>
+              <Tooltip title={siteName}>
+                <div
+                  className={styles.siteIcon}
+                  style={{ backgroundImage: `url(${siteIcon})` }}
+                ></div>
+                <div className={styles.siteName}>{siteName}</div>
+              </Tooltip>
             </a>
           ))}
         </div>
