@@ -20,7 +20,7 @@ export const FILTER_TYPES = [
   },
   {
     code: 'random',
-    text: '随机换一批',
+    text: '随机推荐',
     icon: 'iconfont iconsuiji',
   },
   // {
