@@ -116,7 +116,7 @@
   }
   .filter {
     display: flex;
-    margin-left: 50px;
+    // margin-left: 50px;
     position: relative;
     .filterItem {
       cursor: pointer;
@@ -127,7 +127,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 0 10px;
+      margin-right: 20px;
     }
     .filterItem[data-current='true'] {
       opacity: 1;
@@ -145,10 +145,38 @@
       cursor: pointer;
       position: relative;
       margin-left: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      span {
+        display: block;
+        width: 0;
+        height: 0;
+        border: 6px solid transparent;
+        margin: 2px 0;
+        transition: all 0.3s;
+      }
+      span:nth-of-type(1) {
+        border-bottom-color: @BORDER;
+      }
+      span:nth-of-type(2) {
+        border-top-color: @BORDER;
+        opacity: 0.4;
+      }
     }
     .downSort {
-      transform: rotate(180deg);
-      top: 1px;
+      span:nth-of-type(1) {
+        border-bottom-color: @BORDER;
+        opacity: 0.4;
+      }
+      span:nth-of-type(2) {
+        border-top-color: @BORDER;
+        opacity: 1;
+      }
+    }
+    .disabled {
+      cursor: not-allowed;
     }
   }
   margin-bottom: 30px;
