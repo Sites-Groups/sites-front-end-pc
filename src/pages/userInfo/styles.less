@@ -65,11 +65,9 @@
 @BORDER: #40c2f8;
 .indexContainer {
   height: 100%;
-  // width: 1150px;
   margin: 0 auto;
   position: relative;
   display: flex;
-  padding-top: 10px;
   flex-direction: column;
   .operationContainer {
     position: absolute;
@@ -171,5 +169,10 @@
       animation: formRight 0.6s;
       animation-fill-mode: forwards;
     }
+  }
+}
+:global {
+  .ant-table-thead > tr > th {
+    font-weight: bold;
   }
 }

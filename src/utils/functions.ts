@@ -147,7 +147,7 @@ export function getURL2Base64(url: string) {
 
 const { TITLE, DESC } = SITE_BASIC_INFO;
 
-export function updTitleDesc(title: string, desc: string) {
+export function updTitleDesc(title: string = '', desc: string) {
   document.title = `${title} ${TITLE}`;
   const {
     location: { pathname },

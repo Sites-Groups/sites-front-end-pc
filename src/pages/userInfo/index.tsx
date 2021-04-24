@@ -1,15 +1,13 @@
 import React from 'react';
 import { connect } from 'dva';
 import { RootState, User } from 'state-typings';
-// import { useDidMount, useUnmount } from '@/utils/hooks';
-import UserInfo from './components/userInfo';
 import Wrap from './components/wraper';
 import styles from './styles.less';
 
 interface WrapProps {
   user: User;
   dispatch?: any;
-  history?: any;
+  history?: History;
 }
 
 export default connect(({ user }: RootState) => ({
@@ -22,7 +20,6 @@ export default connect(({ user }: RootState) => ({
   };
   return (
     <div className={styles.indexContainer}>
-      <UserInfo user={userInfo} dispatch={dispatch} history={history} />
       <Wrap reLoad={reLoad} user={userInfo} history={history} />
     </div>
   );

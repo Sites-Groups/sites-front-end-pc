@@ -21,3 +21,20 @@ interface BasicRef extends RefAttributes {
     getValue?: Function;
   };
 }
+
+interface HistoryLocation {
+  pathname?: string;
+}
+
+interface History {
+  listen: any;
+  readonly length: number;
+  scrollRestoration: ScrollRestoration;
+  readonly state: any;
+  back(): void;
+  forward(): void;
+  go(delta?: number): void;
+  pushState(data: any, title: string, url?: string | null): void;
+  replaceState(data: any, title: string, url?: string | null): void;
+  location: HistoryLocation;
+}
