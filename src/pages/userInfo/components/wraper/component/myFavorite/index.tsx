@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { Table, Popconfirm } from 'antd';
 import { useDidMount } from '@/utils/hooks';
 import { MAP_SITE_TYPE } from '@/utils/constant';
 import { queryMyFavorite, togglCollectSite } from './service';
 
 import styles from './styles.less';
 
-export default ({ history }) => {
+export default () => {
   const [data, setData] = useState([]);
   useDidMount(async () => {
     const { data: resData } = await queryMyFavorite();
@@ -20,42 +21,54 @@ export default ({ history }) => {
       setData(data.filter((item) => item._id !== siteId));
     }
   };
-  return (
-    <div className={styles.sites}>
-      {data.map((item, index) => {
-        if (!item) return null;
-        const { siteLink, siteName, siteUpvotes, _id, siteType } = item;
-        return (
-          <div key={siteLink} className={styles.siteItem}>
-            <a
-              className={`${styles.item} ${styles.name}`}
-              onClick={() => window.open(`/site-info?siteId=${_id}&siteType=${siteType}`)}
-            >
-              <div className={styles.index}>{index + 1}</div>
-              {siteName}
-            </a>
-            <div className={styles.item}>
-              <span className={styles.upvote}>
-                <i className="iconfont icondianzan" />
-                <span className={styles.upvoteNum}>{siteUpvotes.length}</span>
-              </span>
-            </div>
-            <div className={styles.item}>
-              <span className={styles.siteType}>{MAP_SITE_TYPE[siteType]}</span>
-            </div>
-            <div className={styles.item}>
-              <a href={siteLink} target="_blank" rel="noreferrer">
-                {siteLink}
-                <i className="iconfont iconlink" />
-              </a>
-            </div>
+  const columns = [
+    {
+      title: '名称',
+      render: ({ siteType, siteName, _id }) => (
+        <a
+          className={`${styles.item} ${styles.name}`}
+          onClick={() => window.open(`/site-info?siteId=${_id}&siteType=${siteType}`)}
+        >
+          {siteName}
+        </a>
+      ),
+    },
+    {
+      title: '分类',
+      render: ({ siteType }) => MAP_SITE_TYPE[siteType],
+    },
+    {
+      title: '点赞',
+      render: ({ siteUpvotes }) => (
+        <span className={styles.upvote}>
+          <i className="iconfont icondianzan" />
+          <span className={styles.upvoteNum}>{siteUpvotes.length}</span>
+        </span>
+      ),
+    },
+    {
+      title: '链接',
+      render: ({ siteLink }) => (
+        <a href={siteLink} target="_blank" rel="noreferrer">
+          {siteLink}
+          <i className="iconfont iconlink" />
+        </a>
+      ),
+    },
+    {
+      title: '操作',
+      render: ({ siteType, siteName, _id, userId }) => (
+        <div className={styles.item}>
+          <Popconfirm
+            title={`确认取消收藏站点：${siteName}?`}
+            onConfirm={() => cancelFavorite(_id, siteType)}
+          >
+            <a>取消收藏</a>
+          </Popconfirm>
+        </div>
+      ),
+    },
+  ];
 
-            <div className={styles.item}>
-              <a onClick={() => cancelFavorite(_id, siteType)}>取消收藏</a>
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
+  return <Table rowKey={(d) => d._id} dataSource={data} columns={columns} />;
 };

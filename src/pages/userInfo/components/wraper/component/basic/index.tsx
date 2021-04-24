@@ -52,8 +52,7 @@ export default ({ reLoad }) => {
         <span className={styles.con}>
           <UserIcon
             ref={iconRef}
-            // @ts-ignore
-            value={typeof data.avatar === 'string' ? data?.avatar?.value : data.avatar}
+            value={typeof data.avatar === 'string' ? data.avatar : data?.avatar?.value}
           />
         </span>
       </div>

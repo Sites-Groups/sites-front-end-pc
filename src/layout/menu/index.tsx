@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
-// import { NavLink } from 'dva/router';
 import { User } from '@/models/user';
-// import classnames from 'classnames';
 import { routes, Route } from './constant';
-// import { FULL_SCREEN_PATH } from '@/utils/constant';
 import { SITE_BASIC_INFO } from '@/utils/constant';
 import Menu from './menu';
 import { getNavStyle } from './util';
@@ -16,12 +13,9 @@ interface Props {
   history: any;
 }
 
-// type Routes = Array<Route>;
-
 export const Header: React.FC<Props> = (props) => {
   const { history, user } = props;
   const [style, setStyle] = useState({});
-  // const [headerStyle, setHeaderStyle] = useState(false);
   const {
     location: { pathname },
     push,
@@ -32,18 +26,16 @@ export const Header: React.FC<Props> = (props) => {
         location: { pathname },
       } = history;
       setStyle(getNavStyle(pathname, styles));
-      // setHeaderStyle(FULL_SCREEN_PATH.includes(pathname) && pathname.replace(/\/+|-/g, ''));
       const { title } =
         routes.find((item: Route) => {
           if (!item.childRoutes) {
             return item.path === pathname;
           }
           return item.childRoutes.find((iItem) => {
-            // item.newTitle = iItem.title;
             return iItem.path === pathname;
           });
         }) || {};
-      document.title = pathname === '/' ? TITLE : `${title} ${TITLE}` || TITLE;
+      document.title = pathname === '/' ? TITLE : `${title || ''} ${TITLE}` || TITLE;
     });
   }, []);
   function renderLinks(links: Array<Route>) {
@@ -72,11 +64,7 @@ export const Header: React.FC<Props> = (props) => {
     });
   }
   return (
-    <header
-    // className={classnames({
-    //   [styles[headerStyle]]: true,
-    // })}
-    >
+    <header className={styles.header}>
       <ul>
         {renderLinks(routes)}
         <div className={styles.navLine} style={style} />
