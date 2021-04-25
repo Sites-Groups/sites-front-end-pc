@@ -13,10 +13,10 @@ export default memo(() => {
       <div className={styles.ba}>
         <a
           target="blank"
-          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010602010125"
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010602011734"
         >
           <img src="/ba.png" alt="" />
-          <p>浙公网安备33010602010125号 滇ICP备2020009525号</p>
+          <p>浙公网安备 33010602011734号</p>
         </a>
       </div>
     </div>
