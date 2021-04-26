@@ -1,15 +1,16 @@
 import React, { memo } from 'react';
 import styles from './styles.less';
 
+const curraneYear = new Date().getFullYear();
+
 export default memo(() => {
-  //   const curraneYear = new Date().getFullYear();
   return (
     <div className={styles.footerInfo}>
-      {/* React Blog, made with <span>❤</span> by{' '}
-      <a href="https://www.baidu.com/s?wd=Ada%20卑微小前端" target="blank">
-        Ada
+      made with <span>❤</span> by{' '}
+      <a href="https://www.baidu.com/s?wd=站点聚合平台" target="_blank" rel="noreferrer">
+        站点聚合平台
       </a>{' '}
-      © 2018 - {curraneYear} */}
+      &copy; {curraneYear}
       <div className={styles.ba}>
         <a
           target="blank"
