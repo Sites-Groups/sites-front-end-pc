@@ -6,11 +6,6 @@ const curraneYear = new Date().getFullYear();
 export default memo(() => {
   return (
     <div className={styles.footerInfo}>
-      made with <span>❤</span> by{' '}
-      <a href="https://www.baidu.com/s?wd=站点聚合平台" target="_blank" rel="noreferrer">
-        站点聚合平台
-      </a>{' '}
-      &copy; {curraneYear}
       <div className={styles.ba}>
         <a
           target="blank"
@@ -20,6 +15,11 @@ export default memo(() => {
           <p>浙公网安备 33010602011734号</p>
         </a>
       </div>
+      made with <span>❤</span> by{' '}
+      <a href="https://www.baidu.com/s?wd=站点聚合平台" target="_blank" rel="noreferrer">
+        站点聚合平台
+      </a>{' '}
+      &copy; {curraneYear}
     </div>
   );
 });
