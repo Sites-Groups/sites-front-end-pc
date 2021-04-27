@@ -1,178 +1,97 @@
-@keyframes formRight {
-  form {
-    opacity: 0;
-    transform: translate3d(100px, 0, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
+@COLOR: #0c5d80;
 
-@keyframes _formRight {
-  form {
-    opacity: 0 !important;
-    transform: translate3d(40px, 0, 0) !important;
-  }
-  to {
-    opacity: 1 !important;
-    transform: translate3d(0, 0, 0) !important;
-  }
-}
-@keyframes fromBottom {
-  form {
-    opacity: 0;
-    transform: translate3d(0, 100px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-@keyframes fromLeft {
-  form {
-    opacity: 0;
-    transform: translate3d(-100px, 0, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-@keyframes _fromLeft {
-  form {
-    opacity: 0 !important;
-    transform: translate3d(-40px, 0, 0) !important;
-  }
-  to {
-    opacity: 1 !important;
-    transform: translate3d(0, 0, 0) !important;
-  }
-}
-@keyframes leftToRight {
-  0% {
-    transform: translate3d(-100px, 0, 0);
-  }
-  50% {
-    transform: translate3d(100px, 0, 0);
-  }
-  100% {
-    transform: translate3d(-100px, 0, 0);
-  }
-}
-
-@COLOR: #ef8c81;
-@BORDER: #40c2f8;
 .indexContainer {
   height: 100%;
   margin: 0 auto;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  .operationContainer {
+  .menus {
     position: absolute;
-    top: -20px;
-    width: 240px;
-    left: -60px;
-    z-index: 2;
-    height: 300px;
-    .api {
-      width: 240px;
-      cursor: pointer;
-      text-align: center;
-      .icon {
-        color: white;
-        text-align: center;
-        transform: translate3d(-100px, 0, 0);
-        animation: leftToRight 8s infinite;
-        i {
-          font-size: 22px;
-        }
-      }
-    }
-    ul {
-      animation: formRight 0.6s;
-      will-change: opacity, transform;
-      opacity: 0;
-      transform: translate3d(60px, 0, 0);
-      animation-fill-mode: forwards;
-      li {
-        line-height: 30px;
-        padding: 62px;
-        color: @BORDER;
-        will-change: opacity, transform;
-        opacity: 0;
-        cursor: pointer;
-        animation: fromLeft 0.6s;
-        transform: translate3d(-40px, 0, 0);
-        animation-fill-mode: forwards;
-        span {
-          margin-left: 20px;
-          font-size: 13px;
-          transition: all 0.4s;
-        }
-      }
-      li:hover span {
-        color: rgba(255, 255, 255, 0.5);
-      }
-    }
-  }
-  .footerInfo {
-    position: absolute;
-    bottom: 160px;
-    white-space: nowrap;
+    top: 50px;
     left: 50%;
-    transform: translateX(-50%);
-    color: white;
-  }
-  .leftContainer {
-    float: left;
-    width: auto;
-    position: relative;
-    .extrc {
+    width: 50%;
+    height: 100px;
+    transform: translate3d(-50%, 0, 0);
+    .menuItem {
       position: absolute;
-      white-space: nowrap;
-      top: 300px;
-      color: white;
-      opacity: 0;
-      font-size: 16px;
-      transform: translate3d(100px, 0, 0);
-      animation: formRight 0.6s;
-      animation-fill-mode: forwards;
+      color: red;
+      padding: 20px;
+      border-radius: 50%;
+      display: none;
     }
-    .extrc2 {
-      position: absolute;
-      white-space: nowrap;
-      top: 350px;
-      left: 100px;
+    .menuItem:nth-of-type(1) {
+      width: 60px;
+      height: 60px;
+      display: block;
+      background: radial-gradient(#929292, @COLOR);
       color: white;
-      opacity: 0;
-      font-size: 16px;
-      transform: translate3d(0, 100px, 0);
-      animation: fromBottom 0.6s;
-      animation-fill-mode: forwards;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: shake 10s infinite;
+      white-space: nowrap;
     }
-    .welcome {
-      position: absolute;
-      top: 250px;
-      left: 0;
-      width: auto;
+    .menuItem:nth-of-type(2) {
+      width: 110px;
+      height: 110px;
+      display: block;
+      left: 140px;
+      top: 40px;
+      background: radial-gradient(#929292, @COLOR);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: shake 10s infinite;
+      white-space: nowrap;
+      font-size: 18px;
+      animation-delay: 1s;
+    }
+    .menuItem:nth-of-type(3) {
+      width: 70px;
+      height: 70px;
+      display: block;
+      left: 340px;
+      top: 80px;
+      background: radial-gradient(#929292, @COLOR);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: shake 10s infinite;
       white-space: nowrap;
       font-size: 14px;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.5);
-      letter-spacing: 0.15em;
+      animation-delay: -1s;
+    }
+    .menuItem:nth-of-type(4) {
+      width: 70px;
+      height: 70px;
       display: block;
-      margin-bottom: 10px;
-      opacity: 0;
-      transform: translate3d(-100px, 0, 0);
-      animation: formRight 0.6s;
-      animation-fill-mode: forwards;
+      left: 460px;
+      top: 80px;
+      background: radial-gradient(#929292, @COLOR);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: shake 10s infinite;
+      white-space: nowrap;
+      font-size: 14px;
+      animation-delay: -1s;
     }
   }
 }
-:global {
-  .ant-table-thead > tr > th {
-    font-weight: bold;
+
+@keyframes shake {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  40% {
+    transform: translate3d(0, 10px, 0);
+  }
+  80% {
+    transform: translate3d(0, -20px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
   }
 }

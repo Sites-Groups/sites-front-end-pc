@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { connect } from 'dva';
 import { RootState, User } from 'state-typings';
-import Wrap from './components/wraper';
+// import Wrap from './components/wraper';
 import { USER_CENTER_ROUTES } from './constant';
 import styles from './styles.less';
 
@@ -21,6 +21,13 @@ export default connect(({ user }: RootState) => ({
   }, []);
   return (
     <div className={styles.indexContainer}>
+      <div className={styles.menus}>
+        {USER_CENTER_ROUTES.map(({ title, path }) => (
+          <div className={styles.menuItem} key={path}>
+            {title}
+          </div>
+        ))}
+      </div>
       111
       {/* <Wrap reLoad={reLoad} user={userInfo} history={history} /> */}
     </div>
