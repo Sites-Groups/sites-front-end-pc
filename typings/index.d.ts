@@ -37,4 +37,5 @@ interface History {
   pushState(data: any, title: string, url?: string | null): void;
   replaceState(data: any, title: string, url?: string | null): void;
   location: HistoryLocation;
+  push?: any;
 }

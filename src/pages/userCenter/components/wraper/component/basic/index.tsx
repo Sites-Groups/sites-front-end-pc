@@ -17,6 +17,7 @@ const MAP_COMPONENT = {
 
 interface DataState {
   avatar?: { value: string };
+  email?: string;
 }
 
 export default ({ reLoad }) => {
@@ -45,34 +46,44 @@ export default ({ reLoad }) => {
       [code]: eve.target ? eve.target.value : eve,
     });
   };
+  const { avatar, email } = data;
+  console.log('avatar', avatar);
   return (
-    <div className={styles.basic}>
-      <div className={styles.item}>
-        <span className={styles.label}>头像：</span>
-        <span className={styles.con}>
-          <UserIcon
-            ref={iconRef}
-            value={typeof data.avatar === 'string' ? data.avatar : data?.avatar?.value}
-          />
-        </span>
-      </div>
-      {USER_INFO.map(({ code, name, type, ...others }) => {
-        const Component = MAP_COMPONENT[type];
-        if (!Component) return null;
-        const value = data[code];
-        return (
-          <div className={styles.item} key={code}>
-            <span className={styles.label}>{name}：</span>
+    <div className={styles.box}>
+      <div className={styles.basic}>
+        <div className={styles.avatarBox}>
+          <div className={styles.avatar} style={{ backgroundImage: `url(${avatar})` }} />
+          <div className={styles.emailText}>{email}</div>
+        </div>
+        <div className={styles.info}>
+          {USER_INFO.map(({ code, name, type, ...others }) => {
+            const Component = MAP_COMPONENT[type];
+            if (!Component) return null;
+            const value = data[code];
+            return (
+              <div className={styles.item} key={code}>
+                <span className={styles.label}>{name}：</span>
+                <span className={styles.con}>
+                  <Component {...others} value={value} onChange={(e) => onChange(e, code)} />
+                </span>
+              </div>
+            );
+          })}
+          <div className={styles.item}>
+            <span className={styles.label}>头像：</span>
             <span className={styles.con}>
-              <Component {...others} value={value} onChange={(e) => onChange(e, code)} />
+              <UserIcon
+                ref={iconRef}
+                value={typeof data.avatar === 'string' ? data.avatar : data?.avatar?.value}
+              />
             </span>
           </div>
-        );
-      })}
+        </div>
+      </div>
       <div className={styles.updBtn}>
-        <Button type="primary" onClick={onUpdate}>
+        <div className={styles.button} onClick={onUpdate}>
           更新
-        </Button>
+        </div>
       </div>
     </div>
   );

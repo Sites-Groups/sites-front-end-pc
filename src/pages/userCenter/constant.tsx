@@ -23,6 +23,6 @@ export const USER_CENTER_ROUTES = [
   {
     path: '/user-center/setting',
     Component: (arg) => <Setting {...arg} />,
-    title: '系统设置',
+    title: '设置',
   },
 ];

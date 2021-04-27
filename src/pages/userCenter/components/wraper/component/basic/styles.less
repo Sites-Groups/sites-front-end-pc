@@ -1,7 +1,44 @@
 @BG: rgba(90, 81, 81, 0.18);
 // @COLOR: white;
-@COLOR: #ef8c81;
-@BORDER: #40c2f8;
+@COLOR: black;
+@BORDER: rgba(0, 0, 0, 0.85);
+.box {
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.58);
+  border-radius: 5px;
+  width: 500px;
+  height: 260px;
+}
+.basic {
+  overflow: hidden;
+  display: flex;
+  .avatarBox {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    .emailText {
+      margin-top: 10px;
+      letter-spacing: 1px;
+      color: @BORDER;
+      font-weight: 550;
+    }
+    .avatar {
+      width: 100px;
+      height: 100px;
+      background-color: white;
+      border-radius: 50%;
+      overflow: hidden;
+      background-size: cover;
+    }
+  }
+  .info {
+    flex: 1;
+    margin-left: 20px;
+  }
+}
 .item {
   display: flex;
   align-items: center;
@@ -9,6 +46,7 @@
   .label {
     width: 80px;
     color: @BORDER;
+    text-align: right;
   }
   .con {
     display: block;
@@ -38,8 +76,19 @@
   }
 }
 .updBtn {
-  margin-left: 80px;
+  // margin-left: 80px;
   margin-top: 10px;
+  .button {
+    color: @COLOR;
+    border: 1px solid @BORDER;
+    background: transparent;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    cursor: pointer;
+  }
   // button {
   //   color: white;
   // }
