@@ -38,9 +38,9 @@ export default ({ children, history }: Props) => {
   }, []);
   const { bgList } = config;
   if (pathname === '/super-admin') return <Fragment>{children}</Fragment>;
-  if (/user\//.test(pathname)) {
-    return <UserCenterLayout history={history}>{children}</UserCenterLayout>;
-  }
+  // if (/user\//.test(pathname)) {
+  //   return <UserCenterLayout history={history}>{children}</UserCenterLayout>;
+  // }
   return (
     <div className={styles.body}>
       <Header history={history} />

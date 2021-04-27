@@ -16,7 +16,7 @@ export default (props) => {
   return (
     <div className={styles.slide} key={pathname}>
       <Route
-        path="/user/basic-info"
+        path="/user-center/basic-info"
         component={() => (
           // <Content title="基础信息">
           <Basic {...props} />
@@ -24,7 +24,7 @@ export default (props) => {
         )}
       />
       <Route
-        path="/user/my-site"
+        path="/user-center/my-site"
         component={() => (
           // <Content title="我的站点">
           <MySite {...props} />
@@ -32,7 +32,7 @@ export default (props) => {
         )}
       />
       <Route
-        path="/user/setting"
+        path="/user-center/setting"
         component={() => (
           // <Content title="我的设置">
           <Setting {...props} />
@@ -40,7 +40,7 @@ export default (props) => {
         )}
       />
       <Route
-        path="/user/my-favorite"
+        path="/user-center/my-favorite"
         component={() => (
           // <Content title="我的收藏">
           <MyFavorite {...props} />

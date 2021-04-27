@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { User } from '@/models/user';
+import { User } from 'state-typings';
+import { connect } from 'dva';
 import { routes, Route } from './constant';
 import { SITE_BASIC_INFO } from '@/utils/constant';
 import Menu from './menu';
@@ -13,7 +14,7 @@ interface Props {
   history: any;
 }
 
-export const Header: React.FC<Props> = (props) => {
+export const Header: React.FC<Props> = connect(({ user }) => ({ user }))((props) => {
   const { history, user } = props;
   const [style, setStyle] = useState({});
   const {
@@ -37,11 +38,12 @@ export const Header: React.FC<Props> = (props) => {
         }) || {};
       document.title = pathname === '/' ? TITLE : `${title || ''} ${TITLE}` || TITLE;
     });
-  }, []);
+  }, [user.isLogin]);
   function renderLinks(links: Array<Route>) {
     return links.map((item) => {
-      const { hidden, permission, type, childRoutes, path, title, iconfont } = item;
+      const { hidden, permission, type, childRoutes, path, title, iconfont, needLogin } = item;
       if (hidden || (permission && !user.admin)) return null;
+      if (needLogin && !user.isLogin) return null;
       const renderTitle = iconfont ? <i className={`iconfont ${iconfont}`} /> : title;
       let content = (
         <a key={path} onClick={() => push(path)} data-url={path} data-current={pathname === path}>
@@ -71,4 +73,4 @@ export const Header: React.FC<Props> = (props) => {
       </ul>
     </header>
   );
-};
+});

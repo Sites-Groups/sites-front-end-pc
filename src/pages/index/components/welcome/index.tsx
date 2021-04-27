@@ -20,7 +20,7 @@ export const Welcome: React.FC<WelProps> = ({ dispatch, user, history }) => {
   };
   const { isLogin, name, admin } = user;
   const onView = () => {
-    window.location.replace('/user/basic-info');
+    history.push('/user-center');
   };
   const topTyle = useMemo(
     () => ({

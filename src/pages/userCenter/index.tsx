@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { connect } from 'dva';
 import { RootState, User } from 'state-typings';
 import Wrap from './components/wraper';
+import { USER_CENTER_ROUTES } from './constant';
 import styles from './styles.less';
 
 interface WrapProps {
@@ -15,12 +16,13 @@ export default connect(({ user }: RootState) => ({
 }))((props: WrapProps) => {
   const { user, dispatch, history } = props;
   const userInfo = user || {};
-  const reLoad = () => {
+  const reLoad = useCallback(() => {
     dispatch({ type: 'user/getUserInfo' });
-  };
+  }, []);
   return (
     <div className={styles.indexContainer}>
-      <Wrap reLoad={reLoad} user={userInfo} history={history} />
+      111
+      {/* <Wrap reLoad={reLoad} user={userInfo} history={history} /> */}
     </div>
   );
 });
