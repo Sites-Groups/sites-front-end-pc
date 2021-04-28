@@ -1,26 +1,84 @@
 @COLOR: #0c5d80;
 
+@keyframes container {
+  from {
+    transform: translateX(-50%) rotate(-1deg);
+  }
+  40% {
+    transform: translateX(-50%) rotate(0);
+  }
+  to {
+    transform: translateX(-50%) rotate(-1deg);
+  }
+}
+@keyframes innerContainer {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes animateWarp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
 .indexContainer {
   height: 100%;
   margin: 0 auto;
   position: relative;
+  animation: animateWarp 1s forwards;
   .container {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    // width: 100%;
+    left: 60%;
     top: 240px;
+    transform-origin: center center;
+    animation: container 10s infinite;
+    overflow-y: auto;
+    height: 400px;
+    width: 100%;
+    .innerContainer {
+      opacity: 0;
+      animation: innerContainer 0.6s forwards;
+    }
+  }
+  .container {
+    scrollbar-3dlight-color: transparent;
+    scrollbar-color: transparent;
+    scrollbar-face-color: transparent;
+    scrollbar-highlight-color: transparent;
+    scrollbar-shadow-color: transparent;
+    scrollbar-track-color: transparent;
+    scrollbar-width: 0;
+  }
+  .container::-webkit-scrollbar-track {
+    box-shadow: none;
+    border-radius: 0;
+    background-color: transparent;
+  }
+  .container::-webkit-scrollbar {
+    width: 0;
+    background-color: transparent;
+  }
+  .container::-webkit-scrollbar-thumb {
+    border-radius: 0;
+    box-shadow: transparent;
+    background-color: transparent;
   }
   .menus {
     position: absolute;
     top: 50px;
-    left: 50%;
+    left: 150px;
     width: 50%;
     height: 100px;
-    transform: translate3d(-50%, 0, 0);
     .bgCircle {
       position: absolute;
-      background: red;
       width: 100px;
       height: 100px;
       border-radius: 50%;
@@ -58,8 +116,8 @@
     }
     .menuItem:nth-of-type(2),
     .user-centermy-site {
-      width: 110px;
-      height: 110px;
+      width: 90px;
+      height: 90px;
       display: block;
       left: 140px;
       top: 40px;
@@ -111,7 +169,7 @@
 }
 
 @keyframes shake {
-  0% {
+  from {
     transform: translate3d(0, 0, 0);
   }
   40% {
@@ -120,7 +178,7 @@
   80% {
     transform: translate3d(0, -20px, 0);
   }
-  100% {
+  to {
     transform: translate3d(0, 0, 0);
   }
 }

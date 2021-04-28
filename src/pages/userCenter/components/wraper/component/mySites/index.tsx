@@ -30,7 +30,6 @@ export default ({ reLoad }) => {
           className={`${styles.item} ${styles.name}`}
           onClick={() => window.open(`/site-info?siteId=${_id}&siteType=${siteType}`)}
         >
-          {/* <div className={styles.index}>{index + 1}</div> */}
           {siteName}
         </a>
       ),
@@ -51,7 +50,7 @@ export default ({ reLoad }) => {
     {
       title: '链接',
       render: ({ siteLink }) => (
-        <a href={siteLink} target="_blank" rel="noreferrer">
+        <a href={siteLink} className={styles.link} target="_blank" rel="noreferrer">
           {siteLink}
           <i className="iconfont iconlink" />
         </a>
@@ -61,16 +60,23 @@ export default ({ reLoad }) => {
       title: '操作',
       render: ({ siteType, siteName, _id, userId }) => (
         <div className={styles.item}>
-          <a onClick={() => window.open(`/submit-site?siteId=${_id}&siteType=${siteType}`)}>编辑</a>
+          <a
+            className={styles.link}
+            onClick={() => window.open(`/submit-site?siteId=${_id}&siteType=${siteType}`)}
+          >
+            编辑
+          </a>
           <Popconfirm
             title={`确认删除站点：${siteName}?`}
             onConfirm={() => onDelete(_id, userId, siteType)}
           >
-            <a>删除</a>
+            <a className={styles.link}>删除</a>
           </Popconfirm>
         </div>
       ),
     },
   ];
-  return <Table rowKey={(d) => d._id} dataSource={data} columns={columns} />;
+  return (
+    <Table rowKey={(d) => d._id} className={styles.table} dataSource={data} columns={columns} />
+  );
 };

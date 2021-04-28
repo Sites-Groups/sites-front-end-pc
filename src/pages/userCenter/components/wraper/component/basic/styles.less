@@ -1,12 +1,12 @@
-@BG: rgba(90, 81, 81, 0.18);
-// @COLOR: white;
-@COLOR: black;
-@BORDER: rgba(0, 0, 0, 0.85);
+@COLOR: rgb(255, 255, 255);
+@BORDER: rgba(189, 189, 189, 0.65);
+
 .box {
   padding: 10px;
-  background: rgba(255, 255, 255, 0.58);
+  // border: 1px solid #839daa;
+  background: #497387;
   border-radius: 5px;
-  width: 500px;
+  width: 550px;
   height: 260px;
 }
 .basic {
@@ -15,7 +15,6 @@
   .avatarBox {
     width: 100px;
     display: flex;
-    justify-content: center;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
@@ -24,6 +23,7 @@
       letter-spacing: 1px;
       color: @BORDER;
       font-weight: 550;
+      white-space: pre-wrap;
     }
     .avatar {
       width: 100px;
@@ -51,7 +51,6 @@
   .con {
     display: block;
     flex: 1;
-    // max-width: 400px;
     button {
       margin-top: 5px;
     }
@@ -76,20 +75,13 @@
   }
 }
 .updBtn {
-  // margin-left: 80px;
-  margin-top: 10px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
   .button {
-    color: @COLOR;
-    border: 1px solid @BORDER;
-    background: transparent;
-    padding: 5px 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 100px;
+    text-align: right;
     cursor: pointer;
+    color: @COLOR;
   }
-  // button {
-  //   color: white;
-  // }
 }

@@ -4,7 +4,7 @@ import { useDidMount } from '@/utils/hooks';
 import { MAP_SITE_TYPE } from '@/utils/constant';
 import { queryMyFavorite, togglCollectSite } from './service';
 
-import styles from './styles.less';
+import styles from '../mySites/styles.less';
 
 export default () => {
   const [data, setData] = useState([]);
@@ -49,7 +49,7 @@ export default () => {
     {
       title: '链接',
       render: ({ siteLink }) => (
-        <a href={siteLink} target="_blank" rel="noreferrer">
+        <a href={siteLink} className={styles.link} target="_blank" rel="noreferrer">
           {siteLink}
           <i className="iconfont iconlink" />
         </a>
@@ -63,12 +63,14 @@ export default () => {
             title={`确认取消收藏站点：${siteName}?`}
             onConfirm={() => cancelFavorite(_id, siteType)}
           >
-            <a>取消收藏</a>
+            <a className={styles.link}>取消收藏</a>
           </Popconfirm>
         </div>
       ),
     },
   ];
 
-  return <Table rowKey={(d) => d._id} dataSource={data} columns={columns} />;
+  return (
+    <Table className={styles.table} rowKey={(d) => d._id} dataSource={data} columns={columns} />
+  );
 };

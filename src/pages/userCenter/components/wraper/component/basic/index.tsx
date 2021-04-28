@@ -1,4 +1,4 @@
-import React, { useState, createRef } from 'react';
+import React, { useState, createRef, useEffect, useCallback } from 'react';
 import { Input, Radio, Button } from 'antd';
 import { useDidMount } from '@/utils/hooks';
 import Notification from '@/component/Notification';
@@ -20,9 +20,15 @@ interface DataState {
   email?: string;
 }
 
-export default ({ reLoad }) => {
+export default ({ reLoad, dispatch, history }) => {
   const [data, setData] = useState<DataState>({});
   const iconRef: BasicRef = createRef();
+  const onOut = useCallback(() => {
+    dispatch({
+      type: 'user/signOut',
+    });
+    history.push('/');
+  }, []);
   useDidMount(async () => {
     const { success, data: resData } = await queryMyBasicInfo();
     if (success && resData) {
@@ -47,12 +53,15 @@ export default ({ reLoad }) => {
     });
   };
   const { avatar, email } = data;
-  console.log('avatar', avatar);
+  const [avatarValue, setAvatar] = useState<{ value: string } | string>('');
+  useEffect(() => {
+    setAvatar(avatar);
+  }, [avatar]);
   return (
     <div className={styles.box}>
       <div className={styles.basic}>
         <div className={styles.avatarBox}>
-          <div className={styles.avatar} style={{ backgroundImage: `url(${avatar})` }} />
+          <div className={styles.avatar} style={{ backgroundImage: `url(${avatarValue})` }} />
           <div className={styles.emailText}>{email}</div>
         </div>
         <div className={styles.info}>
@@ -75,6 +84,7 @@ export default ({ reLoad }) => {
               <UserIcon
                 ref={iconRef}
                 value={typeof data.avatar === 'string' ? data.avatar : data?.avatar?.value}
+                setAvatar={setAvatar}
               />
             </span>
           </div>
@@ -83,6 +93,9 @@ export default ({ reLoad }) => {
       <div className={styles.updBtn}>
         <div className={styles.button} onClick={onUpdate}>
           更新
+        </div>
+        <div className={styles.button} onClick={onOut}>
+          退出登录
         </div>
       </div>
     </div>

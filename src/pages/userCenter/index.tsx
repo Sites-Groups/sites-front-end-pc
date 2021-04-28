@@ -15,17 +15,18 @@ interface WrapProps {
 export default connect(({ user }: RootState) => ({
   user,
 }))((props: WrapProps) => {
-  const { user, dispatch, history } = props;
+  const { dispatch } = props;
   const [activityKey, setKey] = useState<string>(USER_CENTER_ROUTES[0].path);
-  const userInfo = user || {};
   const reLoad = useCallback(() => {
     dispatch({ type: 'user/getUserInfo' });
   }, []);
   const Component = useMemo(() => {
-    const target = USER_CENTER_ROUTES.find((item) => item.path === activityKey);
+    const { title, Component: component } = USER_CENTER_ROUTES.find(
+      (item) => item.path === activityKey,
+    );
     return {
-      component: target.Component,
-      title: target.title,
+      component,
+      title,
     };
   }, [activityKey]);
   const { component, title } = Component || {};
@@ -48,7 +49,11 @@ export default connect(({ user }: RootState) => ({
           </span>
         </div>
       </div>
-      <div className={styles.container}>{component && component({ ...props, reLoad })}</div>
+      <div className={styles.container}>
+        <div className={styles.innerContainer} key={activityKey}>
+          {component && component({ ...props, reLoad })}
+        </div>
+      </div>
     </div>
   );
 });
