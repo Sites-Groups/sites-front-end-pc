@@ -75,14 +75,14 @@ export function resetObj(obj: any) {
   return obj;
 }
 
-// export function qqSign() {
-//   try {
-//     window.QC.Login.showPopup({
-//       appId: 'appid',
-//       redirectURI: '',
-//     });
-//   } catch (error) {}
-// }
+export function qqSign() {
+  try {
+    window.QC.Login.showPopup({
+      appId: '101946967',
+      redirectURI: 'https://sites.link/qq-login',
+    });
+  } catch (error) {}
+}
 
 export function getValueByRef(ref: Ref) {
   if (ref.current) {

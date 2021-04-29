@@ -1,7 +1,6 @@
 @BG: rgba(255, 255, 255, 0.8);
-// @COLOR: rgba(0, 0, 0, 0.65);
 @BORDER: #40c2f8;
-
+@COLOR: rgba(255, 255, 255, 0.75);
 .item {
   display: flex;
   align-items: center;
@@ -10,7 +9,7 @@
     width: 100px;
     text-align: right;
     // color: @COLOR;
-    color: @BORDER;
+    color: @COLOR;
   }
   .con {
     display: block;
@@ -33,4 +32,24 @@
 .updBtn {
   margin-left: 100px;
   margin-top: 10px;
+}
+.basic {
+  padding: 10px;
+  // border: 1px solid #839daa;
+  background: #497387;
+  border-radius: 5px;
+  width: 550px;
+  height: 260px;
+  animation: container 10s infinite;
+}
+@keyframes container {
+  from {
+    transform: translateX(0) rotate(-1deg);
+  }
+  40% {
+    transform: translateX(0) rotate(0);
+  }
+  to {
+    transform: translateX(0) rotate(-1deg);
+  }
 }

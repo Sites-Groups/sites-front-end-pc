@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
-import { Table, Popconfirm } from 'antd';
+import { Popconfirm, Table } from 'antd';
 import { useDidMount } from '@/utils/hooks';
 import { MAP_SITE_TYPE } from '@/utils/constant';
-import { queryMyFavorite, togglCollectSite } from './service';
+import { queryMySites, deleteSite } from './service';
 
 import styles from './styles.less';
 
-export default () => {
+export default ({ reLoad }) => {
   const [data, setData] = useState([]);
   useDidMount(async () => {
-    const { data: resData } = await queryMyFavorite();
+    const { data: resData } = await queryMySites();
     if (resData) {
       setData(resData);
     }
   });
   if (!data) return null;
-  const cancelFavorite = async (siteId, siteType) => {
-    const { success } = await togglCollectSite({ siteId, siteType });
+  const onDelete = async (siteId, userId, siteType) => {
+    const { success } = await deleteSite({ siteId, userId, siteType });
     if (success) {
-      setData(data.filter((item) => item._id !== siteId));
+      await setData(data.filter((item) => item._id !== siteId));
+      reLoad();
     }
   };
   const columns = [
@@ -49,7 +50,7 @@ export default () => {
     {
       title: '链接',
       render: ({ siteLink }) => (
-        <a href={siteLink} target="_blank" rel="noreferrer">
+        <a href={siteLink} className={styles.link} target="_blank" rel="noreferrer">
           {siteLink}
           <i className="iconfont iconlink" />
         </a>
@@ -59,16 +60,23 @@ export default () => {
       title: '操作',
       render: ({ siteType, siteName, _id, userId }) => (
         <div className={styles.item}>
-          <Popconfirm
-            title={`确认取消收藏站点：${siteName}?`}
-            onConfirm={() => cancelFavorite(_id, siteType)}
+          <a
+            className={styles.link}
+            onClick={() => window.open(`/submit-site?siteId=${_id}&siteType=${siteType}`)}
           >
-            <a>取消收藏</a>
+            编辑
+          </a>
+          <Popconfirm
+            title={`确认删除站点：${siteName}?`}
+            onConfirm={() => onDelete(_id, userId, siteType)}
+          >
+            <a className={styles.link}>删除</a>
           </Popconfirm>
         </div>
       ),
     },
   ];
-
-  return <Table rowKey={(d) => d._id} dataSource={data} columns={columns} />;
+  return (
+    <Table rowKey={(d) => d._id} className={styles.table} dataSource={data} columns={columns} />
+  );
 };

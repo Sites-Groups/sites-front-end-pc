@@ -15,11 +15,11 @@ export const USER_INFO = [
     type: 'radio',
     options: ['男', '女', '小猫咪'],
   },
-  {
-    code: 'email',
-    name: 'email',
-    type: 'input',
-    readOnly: true,
-    disabled: true,
-  },
+  // {
+  //   code: 'email',
+  //   name: 'email',
+  //   type: 'input',
+  //   readOnly: true,
+  //   disabled: true,
+  // },
 ];
