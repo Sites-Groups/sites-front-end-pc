@@ -1,11 +1,23 @@
 @COLOR: rgb(255, 255, 255);
 @BORDER: rgba(255, 255, 255, 0.85);
 
+@keyframes container {
+  from {
+    transform: translateX(0) rotate(-1deg);
+  }
+  40% {
+    transform: translateX(0) rotate(0);
+  }
+  to {
+    transform: translateX(0) rotate(-1deg);
+  }
+}
 .box {
   padding: 10px;
   // border: 1px solid #839daa;
   background: #497387;
   border-radius: 5px;
+  animation: container 10s infinite;
   width: 550px;
   height: 260px;
 }

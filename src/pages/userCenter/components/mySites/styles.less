@@ -9,9 +9,23 @@
     margin-right: 5px;
   }
 }
+@keyframes container {
+  from {
+    transform: translateX(0) rotate(-1deg);
+  }
+  40% {
+    transform: translateX(0) rotate(0);
+  }
+  to {
+    transform: translateX(0) rotate(-1deg);
+  }
+}
 .table {
   // width: 80%;
   background: #497387;
+  animation: container 10s infinite;
+  padding: 10px;
+
   table tr {
     td {
       max-width: 100px;

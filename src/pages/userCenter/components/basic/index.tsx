@@ -25,7 +25,7 @@ interface DataState {
 
 export default ({ reLoad, dispatch, history }) => {
   const [data, setData] = useState<DataState>({});
-  const [needBind, setBind] = useState(false);
+  const [needBind, setBind] = useState(true);
   const iconRef: BasicRef = createRef();
   const onOut = useCallback(() => {
     dispatch({
