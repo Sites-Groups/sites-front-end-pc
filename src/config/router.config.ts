@@ -51,4 +51,8 @@ export default [
     path: '/more/about',
     component: () => import('@/pages/about/index'),
   },
+  {
+    path: '/qq-login',
+    component: () => import('@/pages/qqLogin/index'),
+  },
 ];

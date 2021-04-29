@@ -9,6 +9,9 @@ declare module '*.svg' {
 
 interface Window {
   isMobile?: boolean;
+  QC?: {
+    Login?: any;
+  };
 }
 
 type RefCallback<T> = { bivarianceHack(instance: T | null): void }['bivarianceHack'];
