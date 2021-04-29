@@ -1,8 +1,8 @@
 import React from 'react';
-import Basic from './components/wraper/component/basic';
-import MySite from './components/wraper/component/mySites';
-import Setting from './components/wraper/component/setting';
-import MyFavorite from './components/wraper/component/myFavorite';
+import Basic from './components/basic';
+import MySite from './components/mySites';
+import Setting from './components/setting';
+import MyFavorite from './components/myFavorite';
 
 export const USER_CENTER_ROUTES = [
   {
