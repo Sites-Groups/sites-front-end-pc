@@ -53,25 +53,27 @@ export default () => {
             <i className="iconfont iconshuaxin" />
           </span>
         </div>
-        <div className={styles.list}>
-          {list.map(({ siteIcon, siteName, siteId, siteType }) => (
-            <a
-              key={siteId}
-              className={styles.listItem}
-              href={`/site-info?${stringify({ siteType, siteId })}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Tooltip title={siteName}>
-                <div
-                  className={styles.siteIcon}
-                  style={{ backgroundImage: `url(${siteIcon})` }}
-                ></div>
-                <div className={styles.siteName}>{siteName}</div>
-              </Tooltip>
-            </a>
-          ))}
-        </div>
+        {list.length !== 0 && (
+          <div className={styles.list} key={loading.toString()}>
+            {list.map(({ siteIcon, siteName, siteId, siteType }) => (
+              <a
+                key={siteId}
+                className={styles.listItem}
+                href={`/site-info?${stringify({ siteType, siteId })}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Tooltip title={siteName}>
+                  <div
+                    className={styles.siteIcon}
+                    style={{ backgroundImage: `url(${siteIcon})` }}
+                  ></div>
+                  <div className={styles.siteName}>{siteName}</div>
+                </Tooltip>
+              </a>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
